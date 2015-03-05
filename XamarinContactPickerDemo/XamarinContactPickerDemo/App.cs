@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using XamarinContactPickerDemo.Model;
 using XamarinContactPickerDemo.Pages;
 using XamarinContactPickerDemo.ViewModels;
 
@@ -11,11 +12,11 @@ namespace XamarinContactPickerDemo
 {
     public class App : Application
     {
-        private Action<ContactViewModel> _navigateAction;
+        private Action<Contact> _navigateAction;
         private Action<string> _callContactAction;
         public App()
         {
-            _navigateAction =  new Action<ContactViewModel>((contactViewModel) =>
+            _navigateAction =  new Action<Contact>((contactViewModel) =>
             {
                 var navigationPage = MainPage as NavigationPage;
                 if (navigationPage != null)

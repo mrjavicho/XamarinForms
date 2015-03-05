@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using XamarinContactPickerDemo.Model;
 using XamarinContactPickerDemo.ViewModels;
 
 namespace XamarinContactPickerDemo.Pages
@@ -7,7 +8,7 @@ namespace XamarinContactPickerDemo.Pages
     public partial class InicioPage : ContentPage
     {
         public InicioPageViewModel ViewModel { get; set; }
-        public InicioPage(Action<ContactViewModel> callbackAction)
+        public InicioPage(Action<Contact> callbackAction)
         {
             this.AppCallback = callbackAction;
             InitializeComponent();
@@ -15,12 +16,12 @@ namespace XamarinContactPickerDemo.Pages
             this.BindingContext = ViewModel;
         }
 
-        public Action<ContactViewModel> AppCallback { get; set; }
+        public Action<Contact> AppCallback { get; set; }
         private void ListViewTareas_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (AppCallback!=null)
             {
-                var selectedViewModel = e.SelectedItem as ContactViewModel;
+                var selectedViewModel = e.SelectedItem as Contact;
                 AppCallback(selectedViewModel);
             }
         }

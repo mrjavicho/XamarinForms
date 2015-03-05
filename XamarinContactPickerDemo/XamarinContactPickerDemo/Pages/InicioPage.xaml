@@ -9,8 +9,8 @@
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                <Label VerticalOptions="Center" Text="{Binding Name}" BackgroundColor="{Binding Color}"/>
+                <StackLayout BackgroundColor="{Binding Color}" HorizontalOptions="StartAndExpand"  Orientation="Horizontal">
+                <Label VerticalOptions="Center" Text="{Binding Name}" TextColor="White"/>
             </StackLayout>
             </ViewCell>
           </DataTemplate>
