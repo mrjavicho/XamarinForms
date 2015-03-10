@@ -4,17 +4,21 @@
              x:Class="XamarinContactPickerDemo.Pages.ContactDetailPage">
   <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition/>
+      <ColumnDefinition Width="48"/>
       <ColumnDefinition/>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
-      <RowDefinition Height="100"/>
+      <RowDefinition Height="48"/>
       <RowDefinition/>
     </Grid.RowDefinitions>
-    
-    <Label Text="{Binding Name}"  VerticalOptions="Center" HorizontalOptions="Center" >
-      
-    </Label>
+    <BoxView Width="48" Height="48" BackgroundColor="{Binding Contact.Color}"/>
+    <StackLayout Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+        <Label Text="{Binding Contact.Name}"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="22"/> 
+        <Label Text="{Binding Contact.LastName}"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+    </StackLayout>
+    <Grid Grid.Row="1" Grid.Column="1">
+        <Label HorizontalOptions="Center" TextColor="White" Text="{Binding Contact.AboutMe}" FontSize="18"/> 
+        <ProgressBar x:Name="ProgressBar" IsEnabled="{Binding BussyState}"/>
+    </Grid>   
   </Grid>
-
 </ContentPage>

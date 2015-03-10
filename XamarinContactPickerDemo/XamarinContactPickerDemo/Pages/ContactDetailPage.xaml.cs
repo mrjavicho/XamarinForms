@@ -12,22 +12,33 @@ namespace XamarinContactPickerDemo.Pages
 {
     public partial class ContactDetailPage : ContentPage
     {
-        public ContactDetailPage(Contact viewModel, Action<string> callbackAction)
+        public ContactDetailViewModel ViewModel { get; set; }
+        public ContactDetailPage(Contact contact, Action<string> callbackAction)
         {
-            this.ViewModel = viewModel;
+            this.ViewModel = new ContactDetailViewModel(contact);
             this.AppCallback = callbackAction;
             this.BindingContext = ViewModel;
             InitializeComponent();
         }
 
-        public Contact ViewModel { get; set; }
-
         public Action<string> AppCallback { get; set; }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //
+            if (ViewModel!=null)
+            {
+                try
+                {
+                    await ViewModel.LeerDataContacto();
+                }
+                catch (Exception e)
+                {
+
+                    var a = e.Message;
+                }
+                
+            }
         }
     }
 }
